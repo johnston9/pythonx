@@ -28,7 +28,7 @@ def about_member(member_name):
     with open("data/company.json", "r") as json_data:
         data = json.load(json_data)
         for obj in data:
-            if obj["url"] == member_name: 
+            if obj["url"] == member_name:
                 member = obj
     return render_template("member.html", member=member)
 
@@ -51,3 +51,22 @@ if __name__ == "__main__":
         host=os.environ.get("IP", "0.0.0.0"),
         port=int(os.environ.get("PORT", "5000")),
         debug=True)
+
+import os
+from flask import Flask
+
+
+app = Flask(__name__)
+
+
+@app.route("/")
+def index():
+    return "Hello, World"
+
+
+if __name__ == "__main__":
+    app.run(
+        host=os.environ.get("IP", "0.0.0.0"),
+        port=int(os.environ.get("PORT", "5000")),
+        debug=True)
+
